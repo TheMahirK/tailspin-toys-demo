@@ -1,5 +1,15 @@
 import { describe, it, expect } from 'vitest';
-import { clampRating, formatStarRating } from './ratings';
+import { clampRating, formatRatingOutOfFive, formatStarRating } from './ratings';
+
+describe('formatRatingOutOfFive', () => {
+    it('formats a numeric rating out of five', () => {
+        expect(formatRatingOutOfFive(4.2)).toBe('4.2 / 5');
+    });
+
+    it('shows a fallback when a game has no rating', () => {
+        expect(formatRatingOutOfFive(null)).toBe('No rating yet');
+    });
+});
 
 describe('clampRating', () => {
     it('returns the value unchanged when within range', () => {
